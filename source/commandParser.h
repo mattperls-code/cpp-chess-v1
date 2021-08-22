@@ -103,9 +103,16 @@ class CommandParser
                                                 };
                                             };
                                         };
-                                        int tempX = (target.team == "red" ? board.redPieces : board.bluePieces)[target.index].x;
-                                        (target.team == "red" ? board.redPieces : board.bluePieces)[target.index].x = (target.team == "red" ? board.redPieces : board.bluePieces)[board.getPieceByName("K*").index].x;
-                                        (target.team == "red" ? board.redPieces : board.bluePieces)[board.getPieceByName("K*").index].x = tempX;
+                                        if((target.team == "red" ? board.redPieces : board.bluePieces)[target.index].x == 0){
+                                            (target.team == "red" ? board.redPieces : board.bluePieces)[board.getPieceByName("K*").index].x = 2;
+                                        } else {
+                                            (target.team == "red" ? board.redPieces : board.bluePieces)[board.getPieceByName("K*").index].x = 6;
+                                        };
+                                        if((target.team == "red" ? board.redPieces : board.bluePieces)[target.index].x == 0){
+                                            (target.team == "red" ? board.redPieces : board.bluePieces)[target.index].x = 3;
+                                        } else {
+                                            (target.team == "red" ? board.redPieces : board.bluePieces)[target.index].x = 5;
+                                        };
                                         (target.team == "red" ? board.redPieces : board.bluePieces)[target.index].hasMoved = true;
                                         (target.team == "red" ? board.redPieces : board.bluePieces)[board.getPieceByName("K*").index].hasMoved = true;
                                         board.nextTurn();
